@@ -13,12 +13,14 @@
     "@astrojs/image": "^0.15.0",
     "@astrojs/svelte": "^2.0.2",
     "astro": "^2.0.14",
+    "bulma": "^0.9.4",
     "material-icons": "^1.13.1",
     "nanostores": "^0.7.4",
+    "sass": "^1.58.3",
     "sharp": "^0.31.3",
     "svelte": "^3.55.1",
     "svgo": "^3.0.2",
-    "vis-network": "^9.1.2",
-    "vis-data": "^7.1.4"
+    "vis-data": "^7.1.4",
+    "vis-network": "^9.1.2"
   }
 }

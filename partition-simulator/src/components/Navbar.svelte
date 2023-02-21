@@ -1,10 +1,12 @@
----
-import Icon from './Icon.svelte';
+<script>
+  import { onMount } from "svelte";
+  import { isDarkMode } from "../stores/theme";
 
----
-<nav class="navbar shadow-bottom" role="navigation" aria-label="main navigation">
+</script>
+
+<nav class="navbar shadow-bottom" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="/">
+    <a class="navbar-item" href="/partition-sim-ui/">
       <svg viewBox="0 0 99.86 99.86" width="auto" height="60" class="color-primary">
         <g 
             transform="matrix(0.8888900876045227,0,0,0.8888900876045227,-4.444461492867693,5.679458098630233)" 
@@ -29,7 +31,7 @@ import Icon from './Icon.svelte';
         </g>
       </svg>
     </a>
-    <a 
+    <!-- <a 
         role="button" 
         class="navbar-burger" 
         aria-label="menu" 
@@ -39,12 +41,12 @@ import Icon from './Icon.svelte';
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
-    </a>
+    </a> -->
   </div>
 
   <div id="navbar" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a class="navbar-item" href="/partition-sim-ui/home/">
         Home
       </a>
 
@@ -54,13 +56,13 @@ import Icon from './Icon.svelte';
         </div>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item space-between" href="/usage">
+          <a class="navbar-item space-between" href="/partition-sim-ui/usage">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
             </svg>
             <span>Usage</span>
           </a>
-          <a class="navbar-item space-between">
+          <a class="navbar-item space-between" href="/partition-sim-ui/documentation">
             <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 fill="none" 
@@ -75,7 +77,7 @@ import Icon from './Icon.svelte';
                 Documentation
             </span>
           </a>
-          <a class="navbar-item space-between" href="/architecture">
+          <a class="navbar-item space-between" href="/partition-sim-ui/architecture">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
             </svg>
@@ -84,7 +86,7 @@ import Icon from './Icon.svelte';
                 Architecture
             </span>
           </a>
-          <a class="navbar-item space-between">
+          <a class="navbar-item space-between" href="https://github.com/aalekhpatel07/partition-sim">
             <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-slate-900"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.463 2 11.97c0 4.404 2.865 8.14 6.839 9.458.5.092.682-.216.682-.48 0-.236-.008-.864-.013-1.695-2.782.602-3.369-1.337-3.369-1.337-.454-1.151-1.11-1.458-1.11-1.458-.908-.618.069-.606.069-.606 1.003.07 1.531 1.027 1.531 1.027.892 1.524 2.341 1.084 2.91.828.092-.643.35-1.083.636-1.332-2.22-.251-4.555-1.107-4.555-4.927 0-1.088.39-1.979 1.029-2.675-.103-.252-.446-1.266.098-2.638 0 0 .84-.268 2.75 1.022A9.607 9.607 0 0 1 12 6.82c.85.004 1.705.114 2.504.336 1.909-1.29 2.747-1.022 2.747-1.022.546 1.372.202 2.386.1 2.638.64.696 1.028 1.587 1.028 2.675 0 3.83-2.339 4.673-4.566 4.92.359.307.678.915.678 1.846 0 1.332-.012 2.407-.012 2.734 0 .267.18.577.688.48 3.97-1.32 6.833-5.054 6.833-9.458C22 6.463 17.522 2 12 2Z"></path></svg>
             <span>
                 Contribute
@@ -97,15 +99,15 @@ import Icon from './Icon.svelte';
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-rounded background-primary">
+          <!-- <a class="button is-rounded is-link">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light">
+          <a class="button is-rounded is-light">
             Log in
+          </a> -->
+          <a class="button is-white is-rounded" href="https://github.com/aalekhpatel07/partition-sim">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           </a>
-            <!-- <button class="button">
-                <span>GitHub</span>
-            </button> -->
         </div>
       </div>
     </div>
@@ -115,13 +117,13 @@ import Icon from './Icon.svelte';
     .color-primary {
         color: var(--color-primary);
     }
-    .text-white {
+    /* .text-white {
         color: var(--color-white);
     }
     .background-primary {
         background-color: var(--color-primary);
         color: var(--color-white);
-    }
+    } */
     .shadow-bottom {
         box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
     }

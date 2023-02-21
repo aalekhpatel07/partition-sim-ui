@@ -8,11 +8,16 @@ import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [image({
-    serviceEntryPoint: '@astrojs/image/sharp'
-  }), svelte()],
+  integrations: [
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+    svelte(),
+  ],
   server: {
     port: 3001,
-    host: true
-  }
+    host: true,
+  },
+  site: "https://aalekhpatel07.github.io",
+  base: "/partition-sim-ui",
 });

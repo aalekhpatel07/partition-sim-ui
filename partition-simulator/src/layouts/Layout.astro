@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import Navbar from '../components/Navbar.astro';
+import Navbar from '../components/Navbar.svelte';
 
 export interface Props {
 	title: string;
@@ -14,17 +14,25 @@ const { title } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/partition-sim-ui/favicon.svg" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-		<link rel="stylesheet" href="https://kit.fontawesome.com/22eddba3c.css" crossorigin="anonymous">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body class="w-full h-full">
-		<Navbar />
+		<Navbar client:only/>
 		<div class="w-full h-full body-container">
 			<slot />
 		</div>
+		<footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                <strong>Partition Simulator</strong> by <a href="https://github.com/aalekhpatel07">Aalekh Patel</a>. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                </p>
+            </div>
+        </footer>
 	</body>
 </html>
 
