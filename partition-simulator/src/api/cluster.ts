@@ -1,7 +1,11 @@
 import type { Address, Cluster, Uuid } from '../types/models';
 import { get } from './common';
 
-export type LoadClusterResponse = Record<Uuid, Address>;
+interface LoadClusterResponseObject {
+  uuid: Uuid;
+  address: Address;
+}
+export type LoadClusterResponse = Array<LoadClusterResponseObject>;
 export type LoadClusterError = string;
 
 export async function loadCluster(): Promise<LoadClusterResponse> {

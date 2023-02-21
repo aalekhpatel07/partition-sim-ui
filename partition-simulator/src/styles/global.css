@@ -1,0 +1,34 @@
+.w-screen {
+    width: 100vw;
+}
+
+.h-screen {
+    height: 100vh;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.space-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+:root {
+    --color-primary: #04179b;
+    --color-white: #f1f1f1;
+}
+
+.h-6 {
+    height: 1.5rem;
+}
+.w-6 {
+    width: 1.5rem;
+}

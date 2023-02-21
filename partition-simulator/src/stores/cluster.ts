@@ -11,12 +11,13 @@ function createCluster() {
     return {
         subscribe,
         load: async () => {
-            return loadCluster()
-            .then(mapping => {
-                set({
-                    nodeIds: Object.keys(mapping),
-                    mapping
-                });
+            return loadCluster().then((response) => {
+              set({
+                nodeIds: response.map((node) => node.uuid),
+                mapping: Object.fromEntries(
+                  response.map((node) => [node.uuid, node.address])
+                ),
+              });
             });
         },
     }
