@@ -1,0 +1,49 @@
+name: Deploy the homepage and docs for Partition Simulator.
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-frontend:
+    runs-on: ubuntu-latest
+    name: Node 16
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Build the Astro app.
+        env:
+          PUBLIC_PARTITION_SIM_API_URL: ${{ secrets.PUBLIC_PARTITION_SIM_API_URL }}
+        run: |
+          cd partition-simulator
+          npm ci
+          npm run build
+      - name: Archive production build of the Astro app.
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: partition-simulator/dist/
+  deploy-pages:
+    needs: build-frontend
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
